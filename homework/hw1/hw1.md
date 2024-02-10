@@ -18,9 +18,17 @@ MCIS6273 Data Mining (Prof. Maull) / Spring 2024 / HW1
 * **INDEPENDENT WORK:** Copying, cheating, plagiarism  and academic dishonesty _are not tolerated_ by University or course policy.  Please see the syllabus for the full departmental and University statement on the academic code of honor.
 
 ## OBJECTIVES
-* Perfom basic data engineering in Python using OpenAQ weather data
+* Perfom basic data engineering and visualization in Python using an external set data.
 
-* Perfom basic data analysis in Python using OpenAQ weather data
+* Perform  data engineering in Python using OpenAQ API.
+
+* Perfom basic data analysis in Python using OpenAQ weather data.
+
+* Perfom basic statistical significance tests of air quality data.
+
+* Complete the online HW1 assessment.
+
+* BONUS: Build and analyze a more complex OpenAQ data set.
 
 ## WHAT TO TURN IN
 You are being encouraged to turn the assignment in using the provided
@@ -38,27 +46,17 @@ this homework.
 
 
 ## ASSIGNMENT TASKS
-### (30%) Perfom basic data engineering in Python using OpenAQ weather data 
-
-
+### (10%) Perfom basic data engineering and visualization in Python using an external set data. 
 
 Like last homework, you will continue your practice of data engineering to
 prepare data for analysis.  
 
-This time, we will get important data from an API by combining other
-data sources together for a single purpose.
-
+This time, we will get exposure to gathering data from an API 
+and visualizing that data.
 
 You are aware that there are many airports in the US -- and
 in this assignment, we will get the latitude and longitude
-coordinates of over 60 major airports and perform and important
-query against an API to find the nearest air quality stations
-to those airports.
-
-In effect, we will have the API perform a _nearest neighbor_ lookup
-for us and from that, we will build a dataset that we 
-can use to visualize the airports and the stations around
-those airports.
+coordinates of over 60 major airports.
 
 The power of open data cannot be over-emphasized in this 
 part of the assignment, since without it, we would not 
@@ -66,30 +64,9 @@ be able to perform these actions so efficiently, but
 furthermore, we would not be able to get to 
 the _important_ questions so quickly.
 
+This part is a warm up for what is to come.
 
-You will not need an API key for the OpenAQ
-API.  The service is FREE, but I will ask
-that you put a 1-2 second pause (what I call a _be nice_ pause)
-between each call.  While the API and service
-is FREE, running it is not.
-
-Learn more about OpenAQ here:
-
-- [https://openaq.org](https://openaq.org)
-
-They aggregate _global_ air quality data and need 
-continued support to keep operations running smooth and to
-bring this amazing service to anyone on the planet Earth with
-an Internet connection.
-
-Find out how to make a donation to support
-their server, data storage and development
-costs here:
-
-- [https://secure.givelively.org/donate/openaq-inc/](https://secure.givelively.org/donate/openaq-inc/)
-
-
-Your code must be implemented in Jupyter as a notebook -- you
+All of your code must be implemented in Jupyter as a notebook -- you
 will be required to turn in a `.ipynb` file.
 
 **&#167; Task:**  **Use Python to make HTTP/API calls to obtain and prepare data.**
@@ -111,8 +88,8 @@ pull the data into a DataFrame!
 Perform the following:
 
 * store the entire DataFrame in a `csv` file and name it: `all_us_airports.csv`
-* make sure the data is clean -- that is you may notice some non useful data that made it
-  when you call for the file; remove that non useful row
+* make sure the data is clean -- that is you may notice some non useful data 
+  when you call for the data -- there is one row in particular; remove that non useful row
 
 
 **&#167; Task:**  **Filter data to a subset for further use.**
@@ -154,7 +131,7 @@ of code to load the data, loop over it, pull the lat/lon
 of each airport and then display the map.  PLay with the
 provided demos in the folium documentation.
 
-Your map should include the airport icon in the pin
+Your map should include the airport icon in the pin (Font Awesome "airport" icon)
 and the contents of the pin should be the airport
 name and iata code in parethesis, for example, `Denver
 International Airport (DEN)`.
@@ -165,12 +142,37 @@ You can find out how to put a different icon in the pin
 from this documentation: folium [Icon documentation](https://python-visualization.github.io/folium/latest/user_guide/ui_elements/icons.html) 
 
 
-**&#167; Task:**  **Obtain a dataset from OpenAQ**
+
+### (25%) Perform  data engineering in Python using OpenAQ API. 
 
 In this part, will do a small subset of the work
 required to build the dataset for the next part.
-Lucky for us, I have already pulled the data for 
-the  part after this so you don't have to.
+
+We will use the OpenAQ data portal to obtain
+a dataset for later visualization and analysis.
+
+You will not need an API key for the OpenAQ
+API.  The service is FREE, but I will ask
+that you put a 1-2 second pause (what I call a _be nice_ pause)
+between each call.  While the API and service
+is FREE, running it is not.
+
+Learn more about OpenAQ here:
+
+- [https://openaq.org](https://openaq.org)
+
+They aggregate _global_ air quality data and need 
+continued support to keep operations running smooth and to
+bring this amazing service to anyone on the planet Earth with
+an Internet connection.
+
+Find out how to make a donation to support
+their server, data storage and development
+costs here:
+
+- [https://secure.givelively.org/donate/openaq-inc/](https://secure.givelively.org/donate/openaq-inc/)
+
+**&#167; Task:**  **Obtain a dataset from OpenAQ**
 
 You will call OpenAQ API for the follow:
 
@@ -214,29 +216,29 @@ need, but we have some ideas about what we _do_ need.
 **Transform**
 
 1. convert the `coordinates` field to two fields: `sensor_lat` and `sensor_lon` which break
-   out the `coordinates->latitude` and `coordinates->longitude` correspondingly 
-   * you will find [`DataFrame.apply()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html) to be exceedingly useful for this
+  out the `coordinates->latitude` and `coordinates->longitude` correspondingly 
+  * you will find [`DataFrame.apply()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html) to be exceedingly useful for this
 1. convert the `date` field to a single value using the `date->local` and make sure that value 
-   is a `datetime64`.
-   * you will need to carefully study [`pd.to_datetime()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) documentation 
-   * the new date field will be called `local_time`, once converted, you will not need the original `date` field
+  is a `datetime64`.
+  * you will need to carefully study [`pd.to_datetime()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) documentation 
+  * the new date field will be called `local_time`, once converted, you will not need the original `date` field
 
 **Filter**
 
 1. reduce the DataFrame to include only the fields: 
-   `locationId`, `location`, `entity`, `parameter`, `value`, `sensor_lat`, and `sensor_lon`, `local_time`
+  `locationId`, `location`, `entity`, `parameter`, `value`, `sensor_lat`, and `sensor_lon`, `local_time`
 1. restrict manufacturer to the subset: `Governmental Organization` and `Community Organization`
 
 **Store**
 
 1. with the final transformed and filtered DataFrame:
-   * store it to a file called `20230606_detroit_downtown_7_5km_aq.csv`
-   * the file should have the columns `locationId`, `location`, `entity`, `parameter`, `value`, `local_time`, `sensor_lat`, and `sensor_lon`
-   * the file will have over six thousand lines in it
+  * store it to a file called `20230606_detroit_downtown_7_5km_aq.csv`
+  * the file should have the columns `locationId`, `location`, `entity`, `parameter`, `value`, `local_time`, `sensor_lat`, and `sensor_lon`
+  * the file will have over six thousand lines in it
 
 
 
-### (35%) Perfom basic data analysis in Python using OpenAQ weather data 
+### (20%) Perfom basic data analysis in Python using OpenAQ weather data. 
 
 Now that we have some sample data (stations within 7.5km of downtown Detroit on June 6, 2023)
 we are going to look at air quality on that day using 
@@ -254,7 +256,7 @@ air quality monitoring and perhaps exposing some
 of the inadequacies of such monitoring not only in
 our country, but globally.
 
-Because OpenAQ has many (hudreds of) millions of datapoints, including
+Because OpenAQ has many (hudreds of) millions of data points, including
 those from PM2.5 air quality sensors, air quality around the time
 of this fire was being carefully monitored.  This data 
 collection and open platform is the reason we can
@@ -268,7 +270,7 @@ data from "community" sensors made by companies like Purple Air.
 
 It will be noted, we are restricting our view to this short
 window of time to keep the computational burden on the 
-cloud servers lower.  A larger dataset in the would help
+cloud servers lower.  A larger dataset  would help
 provide more robust confidence of our analysis
 in this the assignment.
 
@@ -315,26 +317,28 @@ Your map should look something like this:
    averages will be in blue, community in orange, the $x$ and $y$ axes the same as the previous plot.
 
 
-**&#167; Task:**  **Determine if the sensor means for the day are different, and if that difference is _statistically significant_.**
+
+### (25%) Perfom basic statistical significance tests of air quality data. 
 
 We know that the government sensors are intended to be ground truth and 
 thus if the community sensors' values are similar to the government
 sensors, then we can have more confidence that their data can be trusted.
 
-One way to do this is to use statistical tests to determine if
-given a sample of data from each sensor, that they are statistically          
+One way to do this is, if given a data sample from each sensor,
+to use statistical tests to compare the data and determine if
+the data from each sensor are statistically          
 "the same".  We do not intent that they are the actual
 same value, but that they are _statistically_ the same -- that their
 differences are not _meaningful_ or "significant" or "statistically
 significant".
 
 We will not delve into the depths of statistics here, other 
-than to say that if two data sample can be compared 
+than to say that if two data samples can be compared 
 and we want to know, perhaps, if the same sensor
 produced the data, with the assumption
 that the sensors were calibrated and deemed in working order.
 
-The goal then of a statistical test would be, perhaps
+The goal then of a statistical test would be, perhaps,
 to take the means of the two samples, compare them
 _statistically_ and determine if there is a significant
 probability that the means of the two groups are 
@@ -385,12 +389,14 @@ thus correct.  We assume that the community sensors are calibrated and
 can produce values as good as the government one's.  What if these assumptions are unfounded?  During this analysis, you will see if
 these and other assumptions may require further investigation.
 
-Before we get started, you will already realize there are many more datapoints
+**&#167; Task:**  **Determine if the sensor means for the day are different, and if that difference is _statistically significant_.**
+
+Before we get started, you will already realized there are many more data points
 across more community sensors than government sensors.  This imbalance
 must be taken into account.  You will only have 95 data points for the government
 sensors and many thousands of data points from non-government (community) sensors.  
 
-1. In this first task, build a dataset with 95 data points sampled from 100 random
+1. In this task, first build a dataset with 95 data points sampled from 100 random
 draws of data from the community sensors:  
 
   - an easy way to do this is with the `DataFrame.sample()`, with `95` as the parameter
@@ -398,24 +404,26 @@ draws of data from the community sensors:
   - you may want to just concatenate the 100 draws to a 100 column by 95 rows DataFrame and compute the `mean()`, but there are other ways
 
 2. What are the descriptive statistics of your sample and the government data?
-2. Compare and contrast, bring attention to the mean, 75% and standard deviations.
-2. Run a test for normality on the two samples using [`scipy.stats.normaltest()`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html).
+3. Compare and contrast, bring attention to the mean, 75% and standard deviations.
+4. Run a test for normality on the two samples using [`scipy.stats.normaltest()`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html).
   - Can you _fail to reject the null hypothesis_ (that the samples are drawn from normal distributions) at $\alpha < 0.05$?
+  - You will only need to look at the p-value
 5. Run a [Barlett test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bartlett.html#scipy.stats.bartlett) 
-  for equal variances (also known as _homoscedasticity_).
+  for equal variances (also known as _homoscedasticity_). You will only need to look at the p-value.
   - Can you _fail to reject the null hypothesis_ (that the samples have equal variances) at $\alpha < 0.05$?
 6. Run the [independent t-test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind),
   and use the result in the parameter `equal_var=`.  That is if you fail to reject the null hypothesis from Bartlett's
   then `equal_var=True`.
   - Can you _fail to reject the null hypothesis_ (that the means of two independent samples have identical
    average expected values) at $\alpha < 0.001$?  (Notice we have raised the bar for statistical significance!)
+   - Make sure your notebook emits the p-value of the t-test?
 
 
 **&#167; Task:**  **Reflect on the Detroit air quaity data of June 6, 2023 from each of the sensor types in the data**
 
 Going back to the original datasets (including all data points for community sensors), comment on the following:
 
-* What is your reaction to the statement: _Community sensors picked up the poor air quality of the Canadian fires better than Government sensors_.
+* What is your reaction to the statement: _Community sensors detected the poor air quality of the 2023 Canadian wildfires better than Government sensors_.
   - use evidence to support your reaction
   - take into account things like density in your reaction
 * What is your reaction to the statement: _There need to be more community sensors deployed in downtown Detroit_.
@@ -423,24 +431,33 @@ Going back to the original datasets (including all data points for community sen
   - make note of other data points you might need to more thoughtfully react to the statement
 
 
-**&#167; Task:**  **Complete the online HW1 assessment.**
+
+### (20%) Complete the online HW1 assessment. 
+
 
 Once you are done with the coding part of the assignment, you will need to 
 complete the online assessment for
 the final **4 points of your grade** for this assignment.
 
+**&#167; Task:**  Go to the course Blackboard and complete the assessment.
 
-**&#167; Task:**  **BONUS** 
+
+
+### (5 extra points) BONUS: Build and analyze a more complex OpenAQ data set. 
 
 You can earn up to 5 points extra for this part of the assignment.
 
-1. build the OpenAQ dataset for 2023 for JFK airport in New York City
-   - stations must be with 7.5km of the airport
-   - date ranges must be May 1, 2023 to August 31, 2023
-2. analyze the data and answer the questions
-   - compare June 6 in your dataset with the Detroit dataset 
-   - comment on their similarities and differences both in terms
-    of sensor density and intensity of PM2.5 on that day
+**&#167; Task:**  **Build the OpenAQ dataset for 2023 for JFK airport in New York City**
+
+ - stations must be with 7.5km of the airport
+ - date ranges must be May 1, 2023 to August 31, 2023
+
+
+**&#167; Task:**  **Analyze the data and answer the questions**
+
+ - compare June 6 in your dataset with the Detroit dataset 
+ - comment on their similarities and differences both in terms
+  of sensor density and intensity of PM2.5 on that day
 
 
 
