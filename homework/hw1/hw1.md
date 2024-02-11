@@ -451,7 +451,7 @@ You can earn up to 5 points extra for this part of the assignment.
 
 **&#167; Task:**  **Build the OpenAQ dataset for 2023 for JFK airport in New York City**
 
- - stations must be with 7.5km of the airport
+ - stations must be within 7.5km of the airport
  - date ranges must be May 1, 2023 to August 31, 2023
 
 
