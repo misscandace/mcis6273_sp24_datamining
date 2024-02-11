@@ -218,7 +218,7 @@ need, but we have some ideas about what we _do_ need.
 1. convert the `coordinates` field to two fields: `sensor_lat` and `sensor_lon` which break
   out the `coordinates->latitude` and `coordinates->longitude` correspondingly 
   * you will find [`DataFrame.apply()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html) to be exceedingly useful for this
-1. convert the `date` field to a single value using the `date->local` and make sure that value 
+2. convert the `date` field to a single value using the `date->local` and make sure that value 
   is a `datetime64`.
   * you will need to carefully study [`pd.to_datetime()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html) documentation 
   * the new date field will be called `local_time`, once converted, you will not need the original `date` field
