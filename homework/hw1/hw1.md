@@ -326,7 +326,7 @@ sensors, then we can have more confidence that their data can be trusted.
 
 One way to do this is, if given a data sample from each sensor,
 to use statistical tests to compare the data and determine if
-the data from each sensor are statistically          
+the data from each sensor are statistically
 "the same".  We do not intent that they are the actual
 same value, but that they are _statistically_ the same -- that their
 differences are not _meaningful_ or "significant" or "statistically
@@ -391,8 +391,8 @@ these and other assumptions may require further investigation.
 
 **&#167; Task:**  **Determine if the sensor means for the day are different, and if that difference is _statistically significant_.**
 
-Before we get started, you will already realized there are many more data points
-across more community sensors than government sensors.  This imbalance
+Before we get started, you will already realize there are many more data points
+across community sensors than government sensors.  This imbalance
 must be taken into account.  You will only have 95 data points for the government
 sensors and many thousands of data points from non-government (community) sensors.  
 
@@ -401,21 +401,21 @@ draws of data from the community sensors:
 
   - an easy way to do this is with the `DataFrame.sample()`, with `95` as the parameter
   - you can then loop 100 times and average over all those loops
-  - you may want to just concatenate the 100 draws to a 100 column by 95 rows DataFrame and compute the `mean()`, but there are other ways
+  - you may want to just concatenate the 100 draws to a 100 column by 95 row DataFrame and compute the `mean()`, but there are other ways
 
 2. What are the descriptive statistics of your sample and the government data?
 3. Compare and contrast, bring attention to the mean, 75% and standard deviations.
 4. Run a test for normality on the two samples using [`scipy.stats.normaltest()`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html).
-  - Can you _fail to reject the null hypothesis_ (that the samples are drawn from normal distributions) at $\alpha < 0.05$?
+  - Can you _fail to reject the null hypothesis_ (that the samples are drawn from normal distributions) at $\alpha = 0.05$?
   - You will only need to look at the p-value
 5. Run a [Barlett test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bartlett.html#scipy.stats.bartlett) 
   for equal variances (also known as _homoscedasticity_). You will only need to look at the p-value.
-  - Can you _fail to reject the null hypothesis_ (that the samples have equal variances) at $\alpha < 0.05$?
+  - Can you _fail to reject the null hypothesis_ (that the samples have equal variances) at $\alpha = 0.05$?
 6. Run the [independent t-test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind),
   and use the result in the parameter `equal_var=`.  That is if you fail to reject the null hypothesis from Bartlett's
   then `equal_var=True`.
   - Can you _fail to reject the null hypothesis_ (that the means of two independent samples have identical
-   average expected values) at $\alpha < 0.001$?  (Notice we have raised the bar for statistical significance!)
+   average expected values) at $\alpha = 0.001$?  (Notice we have raised the bar for statistical significance!)
    - Make sure your notebook emits the p-value of the t-test?
 
 
