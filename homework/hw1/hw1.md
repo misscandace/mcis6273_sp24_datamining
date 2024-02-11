@@ -419,18 +419,6 @@ draws of data from the community sensors:
    - Make sure your notebook emits the p-value of the t-test?
 
 
-**&#167; Task:**  **Reflect on the Detroit air quaity data of June 6, 2023 from each of the sensor types in the data**
-
-Going back to the original datasets (including all data points for community sensors), comment on the following:
-
-* What is your reaction to the statement: _Community sensors detected the poor air quality of the 2023 Canadian wildfires better than Government sensors_.
-  - use evidence to support your reaction
-  - take into account things like density in your reaction
-* What is your reaction to the statement: _There need to be more community sensors deployed in downtown Detroit_.
-  - use data and evidence in your reaction
-  - make note of other data points you might need to more thoughtfully react to the statement
-
-
 
 ### (20%) Complete the online HW1 assessment. 
 
@@ -439,7 +427,21 @@ Once you are done with the coding part of the assignment, you will need to
 complete the online assessment for
 the final **4 points of your grade** for this assignment.
 
-**&#167; Task:**  Go to the course Blackboard and complete the assessment.
+**&#167; Task:**  **Go to the course Blackboard and complete the assessment.**
+
+**You will be asked to reflect on the Detroit air quaity data of June 6, 2023 from each of the sensor types in the data**
+
+The assessment will be the following 2 questions.  Be prepared to answer them fully for the full points.
+
+
+Going back to the original datasets (including all data points for community sensors), comment on the following:
+
+1. What is your reaction to the statement: _Community sensors detected the poor air quality of the 2023 Canadian wildfires better than Government sensors_.
+  - use evidence to support your reaction
+  - take into account things like density in your reaction
+2. What is your reaction to the statement: _There need to be more community sensors deployed in downtown Detroit_.
+  - use data and evidence in your reaction
+  - make note of other data points you might need to more thoughtfully react to the statement
 
 
 
