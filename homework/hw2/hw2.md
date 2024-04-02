@@ -280,9 +280,9 @@ Again, you should become familiar with the algorithm and implementation in Sciki
 
 In this part we will explore three variations to clustering:
 
-* **varation 1:** _cluster based on a pre-defined set of features_
-* **varation 2:** _cluster based on a high variance features_
-* **varation 1:** _cluster based on all  features_
+* **variation 1:** _cluster based on a pre-defined set of features_
+* **variation 2:** _cluster based on a high variance features_
+* **variation 3:** _cluster based on all  features_
 
 Usually in clustering, we will need to set the number of clusters
 ahead of time.  To simplify things, we will only seek three
