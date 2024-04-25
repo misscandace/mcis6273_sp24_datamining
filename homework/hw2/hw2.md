@@ -263,9 +263,7 @@ You will take the EV data and merge it with eht ACS data, and make the following
 1. plot (using GeoPandas `plot()`) `MEDIANHHI`  using the ZCTA
 2. plot (using GeoPandas `plot()`) `HOMEOWNPCT` using the ZCTA
 3. create a correlation matrix of `MEDIANHHI ` and `ev_count` for all ZIP codes 
-4. plot an interactive plot (using `explore()`) of the correlation; to do this
-   you will need to find the correlation for all ZIP codes then
-   merge these back into the GeoDataFrame.
+4. plot an interactive plot (using explore()) of the correlation for 4 bands of data: band #1 are ZIPs with fewer than 200 EV registrations (over all years), band #2 are ZIPs with 201 - 1000 EVs; band #3 are ZIPs with 1001-2000 EVs and band #4 with >2000 EVs; to do this you will need to find the correlation for each band codes then merge these back into the GeoDataFrame.
 
 
 
